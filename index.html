@@ -1,0 +1,82 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+    <link rel="stylesheet" type="text/css" href="../static/Style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Flask Chatbot</title>
+</head>
+<body>
+ 
+    <div id="chat-container">
+        <div class="top-chat align-items-center d-flex">
+            <div class="row" style="margin-left: 20px; width: 90%;">
+                <div class="col-2" style="padding-right: 0px;" >
+                    <img src="../static/bot.jpg" class="user_img" />
+                </div>
+                <div class="col-4 text-start">
+                    <div class="row">
+                        <span class="text-top">Harris</span>
+                    </div>
+                    <div class="row">
+                        <span class="online">● Online</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="chat-box">
+        </div>
+        <input type="text" id="user-input" placeholder="Type your message...">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+ 
+    <script>
+        var userInput = document.getElementById("user-input");
+        userInput.addEventListener("keypress", function(event) {
+        if (event.keyCode === 13) {
+            sendMessage();
+        }
+    });
+   
+        function sendMessage() {
+            var userMessage = document.getElementById("user-input").value;
+            addMessage('user', userMessage);
+            document.getElementById("user-input").value = "";
+   
+            // Send user message to server
+            fetch("/get", {
+                method: "POST",
+                body: new URLSearchParams({
+                    msg: userMessage
+                }),
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                }
+            })
+            .then(response => response.text())
+            .then(data => {
+                addMessage('bot', data);
+            });
+        }
+   
+        function addMessage(sender, message) {
+            var messageContainer = document.getElementById("chat-box");
+            var messageElement = document.createElement('div');
+ 
+           
+            if (sender === 'user') {
+                messageElement.innerHTML = '<div class="message-user"><div class="chat-user-message user-message">' + message + '</div></div>';
+            } else {
+                messageElement.innerHTML = '<div class="row d-flex message-bot"><img class="user_img" src="../static/bot.jpg">' +
+                                           '<div class="chat-message bot-message">' + message + '</div></div>';
+            }
+   
+            messageContainer.appendChild(messageElement);
+            messageContainer.scrollTop = messageContainer.scrollHeight;
+        }
+    </script>
+</body>
+</html>

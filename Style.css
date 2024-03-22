@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+ 
+ 
+body {
+    font-family: "Poppins", sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+}
+ 
+h1 {
+    text-align: center;
+    color: #333;
+}
+ 
+#chat-container {
+    max-width: 600px;
+    margin: 20px auto;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+ 
+#chat-box {
+    height: 500px;
+    overflow-y: scroll;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+ 
+#user-input {
+    width: calc(100% - 90px);
+    padding: 8px;
+    padding-left: 20px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+}
+ 
+#user-input:focus {
+    border-color: #123E90; /* Change the color to your desired color */
+}
+ 
+button {
+    width: 80px;
+    padding: 8px;
+    background-color: #123E90;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+ 
+button:focus{
+    border-color: #123E90;
+}
+ 
+button:hover {
+    background-color: #3e5b8f;
+}
+ 
+p {
+    margin: 5px 0;
+}
+ 
+p strong {
+    color: #556cd0;
+}
+ 
+::-webkit-scrollbar {
+    width: 5px;
+    color: #123E90;
+}
+.top-chat{
+    background-color: #f5fcff;
+    width: calc(100% + 40px);
+    margin-left: -20px;
+    margin-top: -20px;
+    height: 70px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    color: #123E90;
+    margin-bottom: 10px;
+    border-bottom: #c1c1c1 0.2px solid;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+.text-top{
+    font-size: 22px;
+    font-weight: 600;
+    margin-left: -5px;
+}
+.online{
+    font-size: 15px;
+    font-weight: 400;
+    color: #51ed19;
+    margin-top: -5px;
+    margin-left: -5px;
+}
+.right-align{
+    text-align: right;
+    display: flex;
+ 
+}
+.message-container {
+    max-width: 70%;
+}
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+ 
+  .chat-message, .chat-user-message {
+      padding: 12px;
+      margin: 5px;
+      max-width: 80%;
+      font-size: 14px;
+      animation: fadeIn 0.3s ease-in; /* Apply fade-in animation with ease-in effect */
+  }
+ 
+  .chat-message {
+      border-radius: 0px 20px 20px 20px;
+  }
+ 
+  .chat-user-message {
+      border-radius: 20px 20px 0px 20px;
+  }
+.user-message {
+    background-color: #f0f0f0; /* Grey background for user messages */
+    float: right;
+}
+.bot-message {
+    background-color: #deeaff; /* Light grey background for bot messages */
+    float: left;
+}
+.message-bot{
+    clear:both;
+    margin-left: 3px;
+}
+.message-user{
+    clear:both;
+}
+.sender-label {
+    font-weight: bold;
+}
+.message-image {
+    width: 40px; /* Adjust the size of the image/icon */
+    height: 40px;
+    margin-right: 10px; /* Adjust the spacing between image and message */
+    border-radius: 50%; /* Make the image/icon round */
+}
+.user_img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%; /* Makes it rounded */
+ 
+}
+.user_img_msg{
+    height: 40px;
+    width: 40px;
+    border:1.5px solid #f5f6fa;
+}
+.bot-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%; /* Makes it rounded */
+}
